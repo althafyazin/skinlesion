@@ -1,0 +1,21 @@
+# Ignore model files
+model/*.h5
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore environment files
+venv/
+.env
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore uploaded images (optional, keep only examples)
+static/uploads/*
+!static/uploads/example.jpg
+
+# Ignore logs
+*.log

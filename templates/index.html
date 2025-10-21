@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skin Cancer Detection</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 28px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        /* Hide the default file input */
+        input[type="file"] {
+            display: none;
+        }
+
+        /* Custom upload button */
+        .upload-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .upload-btn:hover {
+            background-color: #0069d9;
+        }
+
+        /* Predict button */
+        .predict-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .predict-btn:hover {
+            background-color: #218838;
+        }
+
+        .prediction {
+            margin-top: 20px;
+            padding: 15px;
+            background: #eafaf1;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #2f6627;
+        }
+
+        .uploaded-img {
+            margin-top: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Skin Cancer Detection</h2>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <!-- Custom upload button -->
+            <label for="file-upload" class="upload-btn">Upload Image</label>
+            <input id="file-upload" type="file" name="file" required onchange="updateFileName()">
+
+            <div id="file-name" style="margin-bottom:15px; color:#555;"></div>
+
+            <button type="submit" class="predict-btn">Predict</button>
+        </form>
+
+        {% if prediction %}
+            <div class="prediction">Prediction: {{ prediction }}</div>
+            <img class="uploaded-img" src="{{ image_url }}" alt="Uploaded Image" width="300">
+        {% endif %}
+    </div>
+
+    <script>
+        function updateFileName() {
+            const input = document.getElementById('file-upload');
+            const infoArea = document.getElementById('file-name');
+            const fileName = input.files[0] ? input.files[0].name : '';
+            infoArea.textContent = fileName ? `Selected: ${fileName}` : '';
+        }
+    </script>
+</body>
+</html>
