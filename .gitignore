@@ -1,22 +1,36 @@
-# Ignore model files
-model/*.h5
-model/*.keras
+# ===============================
+# Deep Learning model files
+# ===============================
+*.h5
+*.keras
+backend/model/
 
-# Ignore Python cache files
+# ===============================
+# Generated static outputs
+# ===============================
+backend/static/*.png
+backend/static/*.jpg
+backend/static/*.txt
+
+# ===============================
+# Python cache
+# ===============================
 __pycache__/
 *.pyc
 
-# Ignore environment files
+# ===============================
+# Virtual environments
+# ===============================
 venv/
 .env
 
-# Ignore system files
+# ===============================
+# OS files
+# ===============================
 .DS_Store
 Thumbs.db
 
-# Ignore uploaded images (optional, keep only examples)
-static/uploads/*
-!static/uploads/example.jpg
-
-# Ignore logs
+# ===============================
+# Logs
+# ===============================
 *.log

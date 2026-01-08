@@ -1,1 +1,0 @@
-error: Unable to allocate 205. MiB for an array with shape (200, 299, 299, 3) and data type float32
