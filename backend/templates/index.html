@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Skin Lesion Classification</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        img {
+            width: 300px;
+            margin-top: 10px;
+            display: block;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 6px 12px;
+            text-align: center;
+        }
+        button {
+            padding: 8px 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Skin Lesion Classification</h2>
+
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="image" required>
+    <br><br>
+    <button type="submit">Predict</button>
+</form>
+
+{% if show_result %}
+<hr>
+
+<h3>Prediction Result</h3>
+<p><b>Predicted Class:</b> {{ predicted_class }}</p>
+<p><b>Confidence:</b> {{ confidence }}%</p>
+
+<h4>Class-wise Probabilities</h4>
+<table>
+    <tr>
+        <th>Class</th>
+        <th>Probability (%)</th>
+    </tr>
+    {% for cls, prob in probabilities.items() %}
+    <tr>
+        <td>{{ cls }}</td>
+        <td>{{ "%.2f"|format(prob) }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr>
+
+<h3>Explainability</h3>
+
+<h4>Grad-CAM (CNN Attention)</h4>
+<img src="/static/gradcam.png">
+
+<h4>LIME (Local Explanation)</h4>
+<img src="/static/lime.png">
+
+<p style="margin-top:20px; font-size: 14px; color: #555;">
+    <i>
+        SHAP explanations are implemented offline due to high computational cost
+        and are not generated during real-time inference.
+    </i>
+</p>
+
+{% endif %}
+
+</body>
+</html>

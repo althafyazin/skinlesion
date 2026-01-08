@@ -1,0 +1,10 @@
+tensorflow
+numpy
+opencv-python
+pillow
+matplotlib
+lime
+shap
+scikit-image
+flask
+flask-cors
