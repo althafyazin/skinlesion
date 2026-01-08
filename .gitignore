@@ -1,5 +1,6 @@
 # Ignore model files
 model/*.h5
+model/*.keras
 
 # Ignore Python cache files
 __pycache__/
